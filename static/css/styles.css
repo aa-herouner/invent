@@ -1,0 +1,9 @@
+#delivery li{
+    display: inline-block;
+    margin-right: 10px;
+}
+
+#delivery ul{
+    list-style-type: none;
+    padding: 0;
+}

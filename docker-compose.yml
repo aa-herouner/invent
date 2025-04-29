@@ -1,0 +1,10 @@
+name: my-inventory-project
+
+services:
+  app:
+    image: my-inventory-image
+    container_name: my-inventory-container
+    ports:
+      - "8001:8000"
+    volumes:
+      - .:/app
