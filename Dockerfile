@@ -38,9 +38,15 @@ RUN pip install -r requirements.txt
 # Copy project files
 COPY . /app/
 
+# Copy static and migration files
+
+RUN python manage.py migrate
+RUN python manage.py collectstatic --noinput
+# RUN python manage.py createsuperuser --noinput --username admin --email
+
 # Expose the port your Django app runs on
 EXPOSE 8000
 
 # Default command
- CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
-# CMD ["gunicorn", "inventory.wsgi.application", "--bind", "0.0.0.0:8000"]
+#  CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["gunicorn", "inventory.wsgi.application", "--bind", "0.0.0.0:8000"]
