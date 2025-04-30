@@ -41,7 +41,7 @@ COPY . /app/
 # Copy static and migration files
 
 RUN python manage.py migrate
-RUN python manage.py collectstatic --noinput
+# RUN python manage.py collectstatic --noinput
 # RUN python manage.py createsuperuser --noinput --username admin --email
 
 # Expose the port your Django app runs on
