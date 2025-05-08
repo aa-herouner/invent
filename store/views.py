@@ -63,6 +63,21 @@ def create_category(request):
     }
     return render(request, 'store/addCategory.html', context)
 
+def edit_category(request, pk):
+    category_edit = get_object_or_404(Category, id=pk)
+    edit_forms = CategoryForm(instance=category_edit)
+
+    if request.method == 'POST':
+        edit_forms = CategoryForm(request.POST, instance=category_edit)
+        if edit_forms.is_valid():
+            messages.success(request, f"{edit_forms.cleaned_data['name']} has been updated")
+            edit_forms.save()
+            return redirect('category-list')
+    context = {
+        'edit_forms': edit_forms
+    }
+    return render(request, 'store/editcategory.html', context)
+
 
 class CategoryListView(ListView):
     model = Category
