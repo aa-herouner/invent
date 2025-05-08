@@ -110,7 +110,7 @@ def edit_product(request, pk):
     context = {
         'edit_forms': edit_forms
     }
-    return render(request, 'store/editProduct.html', context)
+    return render(request, 'store/editproduct.html', context)
 
 # class ProductListView(ListView):
 #     model = Product
